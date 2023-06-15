@@ -16,7 +16,7 @@ local adapters = {
     python = {
         id = 'python',
         type = 'executable',
-        command = data_path .. '/mason/bin/debugpy',
+        command = data_path .. '/mason/bin/debugpy-adapter',
     },
 }
 

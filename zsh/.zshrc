@@ -114,6 +114,7 @@ alias top="htop"
 alias grep="rg"
 alias cat="bat"
 alias podman="sudo podman"
+alias podman-compose="sudo podman-compose"
 
 ##################
 #####Key Bind#####

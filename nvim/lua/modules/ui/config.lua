@@ -18,6 +18,20 @@ function config.onedark()
     require('onedark').load()
 end
 
+function config.catppuccin()
+    require('catppuccin').setup({
+        flavour = 'mocha',
+        background = {
+                       -- :h background
+            light = 'latte',
+            dark = 'mocha',
+        },
+        transparent_background = true,
+        term_colors = true,
+    })
+    vim.cmd('colorscheme catppuccin')
+end
+
 function config.nightfox()
     require('nightfox').setup({
         options = {
@@ -47,10 +61,10 @@ function config.nvim_tree()
             hide_root_folder = false,
             mappings = {
                 list = {
-                    { key = 'h', action = 'split' },
-                    { key = 'v', action = 'vsplit' },
-                    { key = 'i', action = 'toggle_ignored' },
-                    { key = '.', action = 'toggle_dotfiles' },
+                    { key = 'h',    action = 'split' },
+                    { key = 'v',    action = 'vsplit' },
+                    { key = 'i',    action = 'toggle_ignored' },
+                    { key = '.',    action = 'toggle_dotfiles' },
                     { key = '<F5>', action = 'refresh' },
                 },
             },
@@ -74,7 +88,7 @@ function config.nvim_tree()
         vim.cmd.cd(data.file)
         require('nvim-tree.api').tree.open()
     end
-    vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+    vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = open_nvim_tree })
 end
 
 function config.lualine()
@@ -201,8 +215,8 @@ function config.dapui()
         layouts = {
             {
                 elements = {
-                    { id = 'scopes', size = 0.4 },
-                    { id = 'stacks', size = 0.3 },
+                    { id = 'scopes',  size = 0.4 },
+                    { id = 'stacks',  size = 0.3 },
                     { id = 'watches', size = 0.3 },
                 },
                 size = 40,

@@ -4,7 +4,8 @@ local conf = require('modules.ui.config')
 -- plugin({ 'folke/tokyonight.nvim', config = conf.tokyonight })
 
 -- plugin({ "navarasu/onedark.nvim", config = conf.onedark })
-plugin({ 'EdenEast/nightfox.nvim', config = conf.nightfox })
+-- plugin({ 'EdenEast/nightfox.nvim', config = conf.nightfox })
+plugin({ 'catppuccin/nvim', as = "catppuccin", config = conf.catppuccin})
 plugin({ 'nvim-lualine/lualine.nvim', config = conf.lualine })
 plugin({
     'nvim-tree/nvim-tree.lua',
