@@ -16,3 +16,4 @@ plugin({ 'nvim-telescope/telescope-ui-select.nvim' })
 plugin({ 'folke/which-key.nvim', config = conf.whichkey })
 
 plugin({ 'ojroques/nvim-osc52', config = conf.osc52 })
+plugin({ 'folke/lazy.nvim', version = "*" })

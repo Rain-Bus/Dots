@@ -119,8 +119,9 @@ alias podman-compose="sudo podman-compose"
 ##################
 #####Key Bind#####
 ##################
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+bindkey "^A" vi-beginning-of-line
+bindkey "^E" vi-end-of-line
 
 # zsh-history-search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down

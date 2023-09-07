@@ -1,5 +1,7 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local opt = vim.opt
-local cache_dir = require('core.helper').get_cache_path()
 
 -- TEXT PROCESS
 -- Tab Width
@@ -19,49 +21,52 @@ opt.smartindent = true
 
 -- EDITOR SETTING
 -- Encoding
-opt.encoding = 'UTF-8'
-opt.fileencoding = 'UTF-8'
+opt.encoding = "UTF-8"
+opt.fileencoding = "UTF-8"
 
 -- Short Message
-opt.shortmess = 'aoOTIcF'
+opt.shortmess = "aoOTIcCF"
 
 -- Wrap
 opt.linebreak = true
-opt.whichwrap = 'h,l,<,>,[,],~'
-opt.breakindentopt = 'shift:2,min:20'
-opt.showbreak = '↳  '
+opt.whichwrap = "h,l,<,>,[,],~"
+opt.breakindentopt = "shift:2,min:20"
+opt.showbreak = "↳  "
 
 -- Number
 opt.number = true
 opt.relativenumber = true
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 
 -- Scroll Off
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
 -- Cursor
-opt.virtualedit = 'block'
+opt.virtualedit = "block"
 
 -- Buffer
 opt.hidden = true
 
 -- Mouse
-opt.mouse = ''
+opt.mouse = ""
 
 -- File Safe
-opt.directory = cache_dir .. 'swap/'
-opt.undodir = cache_dir .. 'undo/'
-opt.backupdir = cache_dir .. 'backup/'
-opt.viewdir = cache_dir .. 'view/'
-opt.spellfile = cache_dir .. 'spell/en.uft-8.add'
+local cache_dir = os.getenv("HOME") .. "/.cache/nvim/"
+opt.directory = cache_dir .. "swap/"
+opt.undodir = cache_dir .. "undo/"
+opt.backupdir = cache_dir .. "backup/"
+opt.viewdir = cache_dir .. "view/"
+opt.spellfile = cache_dir .. "spell/en.uft-8.add"
 opt.updatetime = 1000
 opt.undofile = true
 opt.autoread = true
+opt.autowrite = true
+opt.confirm = true
 
 -- Timeout
 opt.timeout = true
-opt.timeoutlen = 500
+opt.timeoutlen = 400
 opt.ttimeout = true
 opt.ttimeoutlen = 10
 
@@ -72,13 +77,15 @@ opt.redrawtime = 1500
 opt.ignorecase = true
 opt.smartcase = true
 opt.infercase = true
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
 
 -- Complete Option
-opt.completeopt = 'menu,menuone,noselect,noinsert'
+opt.completeopt = "menu,menuone,noselect,noinsert"
 opt.wildignorecase = true
 
 -- Spell Check
-opt.spelloptions = 'camel'
+opt.spelloptions = "camel"
 
 -- Commad History
 opt.history = 2000
@@ -87,7 +94,7 @@ opt.history = 2000
 opt.termguicolors = true
 
 -- Clipboard
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
 
 -- LAYOUT
 -- Bottom
@@ -97,7 +104,7 @@ opt.cmdheight = 2
 -- Top
 opt.showtabline = 2
 opt.list = true
-opt.listchars = 'tab:  ,nbsp:+,trail:·,extends:→,precedes:←'
+opt.listchars = "tab:  ,nbsp:+,trail:·,extends:→,precedes:←"
 
 -- Windows
 opt.winwidth = 30
@@ -114,12 +121,6 @@ opt.splitbelow = true
 opt.splitright = true
 
 -- OTHER
--- Replace grep
-if vim.fn.executable('rg') == 1 then
-    opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
-    opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
-end
-
--- NVim Tree\
+-- NvimTree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
