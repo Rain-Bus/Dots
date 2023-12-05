@@ -19,10 +19,11 @@ plugin({
     { "saadparwaiz1/cmp_luasnip" },
   },
 })
+plugin({ "zbirenbaum/copilot.lua", event = "InsertEnter", opts = conf.copilot })
 
 plugin({ "neovim/nvim-lspconfig", event = { "BufReadPre", "BufNewFile" }, config = conf.lsp })
 
-plugin({ "jose-elias-alvarez/null-ls.nvim", opts = conf.nuls })
+plugin({ "nvimtools/none-ls.nvim", opts = conf.nuls })
 plugin({ "williamboman/mason.nvim", build = ":MasonUpdate", opts = conf.mason })
 plugin({
   "williamboman/mason-lspconfig.nvim",

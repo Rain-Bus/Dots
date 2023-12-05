@@ -13,7 +13,7 @@ return {
     Info = " ",
   },
   virtual = {
-    prefix = "",
+    prefix = "",
   },
   git = {
     added = " ",

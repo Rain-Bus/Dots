@@ -70,6 +70,10 @@ function M.cmp()
   })
 end
 
+function M.copilot()
+    return {}
+end
+
 function M.mason()
   return {}
 end

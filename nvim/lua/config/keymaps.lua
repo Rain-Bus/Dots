@@ -45,6 +45,9 @@ map("n", "<leader>fp", "<cmd>Telescope project<cr>", { desc = "Telescope find pr
 -- ToggleTerm
 map({ "n", "t" }, "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "ToggleTerm" })
 
+-- NvimTree
+map({ "n" }, "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
+
 -- Dap
 map("n", "<F7>", "<cmd>DapStepInto<cr>", { desc = "Debug step into" })
 map("n", "<F8>", "<cmd>DapStepOver<cr>", { desc = "Debug step over" })
@@ -57,8 +60,8 @@ map("n", "<F44>", "<cmd>Telescope dap list_breakpoints<cr>", { desc = "List brea
 map("n", "<F57>", require("plugins.innerkeymap").dap.run_to_cursor, { desc = "Debug contunue" })
 
 -- Trouble
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {desc = "Toggle trouble"})
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", {desc = "Workspace diagnostic"})
-map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", {desc = "Document diagnostic"})
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", {desc = "Show quickfix"})
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", {desc = "Show loclist"})
+map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { desc = "Toggle trouble" })
+map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { desc = "Workspace diagnostic" })
+map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { desc = "Document diagnostic" })
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Show quickfix" })
+map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Show loclist" })

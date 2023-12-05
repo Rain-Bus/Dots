@@ -31,9 +31,6 @@ function M.nvim_tree()
     system_open = {
       cmd = "xdg-open",
     },
-    view = {
-      hide_root_folder = false,
-    },
     renderer = {
       icons = {
         glyphs = {
@@ -90,15 +87,34 @@ function M.todo()
 end
 
 function M.indent()
-  vim.cmd([[highlight IndentBlanklineIndent1 guifg=#3d607d gui=nocombine]])
-  vim.cmd([[highlight IndentBlanklineIndent2 guifg=#8d929c gui=nocombine]])
+  -- vim.cmd([[highlight IndentBlanklineIndent1 guifg=#3d607d gui=nocombine]])
+  -- vim.cmd([[highlight IndentBlanklineIndent2 guifg=#8d929c gui=nocombine]])
+  -- return {
+  --     space_char_blankline = " ",
+  --     show_current_context = true,
+  --     show_current_context_start = true,
+  --     char_highlight_list = {
+  --         "IndentBlanklineIndent1",
+  --         "IndentBlanklineIndent2",
+  --     },
+  -- }
+  local highlight = {
+    "RainbowViolet",
+    "RainbowCyan",
+  }
+  local hooks = require("ibl.hooks")
+  hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+  end)
+  require("ibl").setup({
+    indent = {
+      highlight = highlight,
+    },
+  })
   return {
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
-    char_highlight_list = {
-      "IndentBlanklineIndent1",
-      "IndentBlanklineIndent2",
+    indent = {
+      highlight = highlight,
     },
   }
 end
@@ -110,8 +126,8 @@ function M.dapui()
     layouts = {
       {
         elements = {
-          { id = "scopes",  size = 0.4 },
-          { id = "stacks",  size = 0.3 },
+          { id = "scopes", size = 0.4 },
+          { id = "stacks", size = 0.3 },
           { id = "watches", size = 0.3 },
         },
         size = 40,

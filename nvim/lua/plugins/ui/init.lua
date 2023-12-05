@@ -38,7 +38,7 @@ plugin({
 
 plugin({ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = conf.todo })
 
-plugin({ "lukas-reineke/indent-blankline.nvim", opts = conf.indent })
+plugin({ "lukas-reineke/indent-blankline.nvim", main = "ibl", config = conf.indent })
 
 plugin({ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" }, opts = conf.dapui })
 
