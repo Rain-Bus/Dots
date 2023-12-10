@@ -1,6 +1,14 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local map = require("utils.keymaps").map
 
--- better up/down
+-- Change mode
+map({ "i", "t" }, "jk", "<ESC>", { desc = "Normal mode" })
+map("n", "<ESC><ESC>", ":wqa", { desc = "Save anad quit" })
+map("n", "<ESC><ESC><ESC>", ":qa!", { desc = "Force quit all" })
+
+-- Better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
