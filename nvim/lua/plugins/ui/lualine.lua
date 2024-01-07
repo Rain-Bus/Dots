@@ -16,7 +16,7 @@ local bubbles_theme = {
     normal = {
         a = { fg = colors.black, bg = colors.violet },
         b = { fg = colors.white, bg = colors.grey },
-        c = { fg = colors.red, gui = 'bold' },
+        c = { fg = colors.red, gui = "bold" },
     },
 
     insert = { a = { fg = colors.black, bg = colors.blue } },
@@ -30,42 +30,42 @@ local bubbles_theme = {
     },
 }
 
-require('lualine').setup({
+require("lualine").setup({
     options = {
         theme = bubbles_theme,
-        component_separators = '|',
-        section_separators = { left = '', right = '' },
+        component_separators = "|",
+        section_separators = { left = "", right = "" },
     },
     sections = {
         lualine_a = {
-            { 'mode', separator = { left = '' }, right_padding = 2 },
+            { "mode", separator = { left = "" }, right_padding = 2 },
         },
-        lualine_b = { 'fileformat', 'branch' },
+        lualine_b = { "fileformat", "branch" },
         lualine_c = {
             {
-                'lsp_progress',
-                spinner_symbols = { ' ', ' ', ' ', ' ', ' ', ' ' },
+                "lsp_progress",
+                spinner_symbols = { "󰇊 ", "󰇋 ", "󰇌 ", "󰇍 ", "󰇎 ", "󰇏 " },
             },
         },
         lualine_x = {
             {
-                'diagnostics',
-                symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+                "diagnostics",
+                symbols = { error = " ", warn = " ", info = "󰋼 ", hint = "󰌵 " },
             },
         },
-        lualine_y = { 'filetype', 'progress' },
+        lualine_y = { "filetype", "progress" },
         lualine_z = {
-            { 'location', separator = { right = '' }, left_padding = 2 },
+            { "location", separator = { right = "" }, left_padding = 2 },
         },
     },
     inactive_sections = {
-        lualine_a = { 'filename' },
+        lualine_a = { "filename" },
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = { 'location' },
+        lualine_z = { "location" },
     },
     tabline = {},
-    extensions = { 'nvim-dap-ui', 'nvim-tree', 'toggleterm' },
+    extensions = { "nvim-dap-ui", "nvim-tree", "toggleterm" },
 })

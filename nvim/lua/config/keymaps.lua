@@ -5,8 +5,8 @@ local map = require("utils.keymaps").map
 
 -- Change mode
 map({ "i", "t" }, "jk", "<ESC>", { desc = "Normal mode" })
-map("n", "<ESC><ESC>", ":wqa", { desc = "Save anad quit" })
-map("n", "<ESC><ESC><ESC>", ":qa!", { desc = "Force quit all" })
+map("n", "<ESC>w", "<cmd>wqa<cr>", { desc = "Save anad quit" })
+map("n", "<ESC>q", "<cmd>qa!<cr>", { desc = "Force quit all" })
 
 -- Better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })

@@ -118,6 +118,10 @@ alias grep="rg"
 alias cat="bat"
 alias podman="sudo podman"
 alias podman-compose="sudo podman-compose"
+alias za="zellij a"
+alias zn="zellij -s"
+alias tn="tmux new -s"
+alias ta="tmux at -t"
 
 ##################
 #####Key Bind#####
