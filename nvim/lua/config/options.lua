@@ -93,6 +93,26 @@ opt.termguicolors = true
 -- Clipboard
 opt.clipboard = "unnamedplus"
 
+function no_paste(reg)
+  return function(lines)
+    -- Do nothing! We can't paste with OSC52
+  end
+end
+
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    -- ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+    -- ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    ["+"] = no_paste("+"), -- Pasting disabled
+    ["*"] = no_paste("*"), -- Pasting disabled
+  },
+}
+
 -- LAYOUT
 -- Bottom
 opt.showmode = false

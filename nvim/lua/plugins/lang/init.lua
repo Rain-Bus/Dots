@@ -3,7 +3,7 @@ local plugin = require("plugins").register
 
 plugin({ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", opts = conf.treesitter })
 
-plugin({ "mfussenegger/nvim-dap", config = conf.dap })
+plugin({ "mfussenegger/nvim-dap", config = conf.dap, dependencies = { "nvim-neotest/nvim-nio" } })
 
 plugin({ "L3MON4D3/LuaSnip", version = "1.*", build = "make install_jsregexp" })
 
