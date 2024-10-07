@@ -54,7 +54,7 @@ local servers = {
   -- Front
   html = {},
   cssls = {},
-  tsserver = {},
+  ts_ls = {},
   volar = {
     init_options = {
       typescript = {

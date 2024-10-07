@@ -89,6 +89,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# Rustup
+. "$HOME/.cargo/env"
+
 # Powerlevel10k
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -114,8 +117,8 @@ alias lla="eza -al"
 alias tree="eza -T --icons"
 alias du="ncdu"
 alias top="htop"
-alias grep="rg"
-alias cat="bat"
+# alias grep="rg"
+# alias cat="bat"
 alias podman="sudo podman"
 alias podman-compose="sudo podman-compose"
 alias za="zellij a"
