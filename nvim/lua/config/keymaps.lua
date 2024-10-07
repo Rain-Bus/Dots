@@ -68,8 +68,8 @@ map("n", "<F44>", "<cmd>Telescope dap list_breakpoints<cr>", { desc = "List brea
 map("n", "<F57>", require("plugins.innerkeymap").dap.run_to_cursor, { desc = "Debug contunue" })
 
 -- Trouble
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { desc = "Toggle trouble" })
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { desc = "Workspace diagnostic" })
-map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { desc = "Document diagnostic" })
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Show quickfix" })
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Show loclist" })
+map("n", "<leader>xx", "<cmd>Trouble<cr>", { desc = "Toggle trouble" })
+map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { desc = "Workspace diagnostic" })
+map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", { desc = "Document diagnostic" })
+map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { desc = "Show quickfix" })
+map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { desc = "Show loclist" })

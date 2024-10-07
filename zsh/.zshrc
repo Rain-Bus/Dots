@@ -19,9 +19,9 @@ export EDITOR=nvim
 export PATH="$HOME/.local/bin:$PATH"
 
 # ZSH History
-export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=10000
-export SAVEHIST=10000
+#export HISTFILE="$HOME/.zsh_history"
+#export HISTSIZE=10000
+#export SAVEHIST=10000
 
 # PNPM
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -51,8 +51,8 @@ if [[ -f ~/.zplug/init.zsh ]] {
 	zplug "plugins/colored-man-pages", from:oh-my-zsh
 
 	zplug "zsh-users/zsh-syntax-highlighting"
-	zplug "zsh-users/zsh-autosuggestions"
-	zplug "zsh-users/zsh-history-substring-search"
+#	zplug "zsh-users/zsh-autosuggestions"
+#	zplug "zsh-users/zsh-history-substring-search"
 	zplug "junegunn/fzf"
 
 	#zplug "romkatv/powerlevel10k", as:theme
@@ -90,7 +90,7 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Rustup
-. "$HOME/.cargo/env"
+[[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
 # Powerlevel10k
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -104,6 +104,9 @@ eval "$(pyenv init -)"
 
 # Starship
 eval "$(starship init zsh)"
+
+# Atuin
+eval "$(atuin init zsh)"
 
 ##################
 ######Aliases#####
@@ -133,5 +136,5 @@ bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
 
 # zsh-history-search
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
+#bindkey "^[[A" history-substring-search-up
+#bindkey "^[[B" history-substring-search-down
