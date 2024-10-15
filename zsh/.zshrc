@@ -126,6 +126,7 @@ alias podman="sudo podman"
 alias podman-compose="sudo podman-compose"
 alias za="zellij a"
 alias zn="zellij -s"
+alias zl="zellij ls"
 alias tn="tmux new -s"
 alias ta="tmux at -t"
 
