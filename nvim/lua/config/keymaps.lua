@@ -52,6 +52,7 @@ map("n", "<leader>fp", "<cmd>Telescope project<cr>", { desc = "Telescope find pr
 
 -- ToggleTerm
 map({ "n", "t" }, "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "ToggleTerm" })
+map("t", "<ESC>", "<C-\\><C-n>", { desc = "Visual Mode" })
 
 -- NvimTree
 map({ "n" }, "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
