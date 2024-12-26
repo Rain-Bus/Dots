@@ -140,7 +140,7 @@ alias zn="zellij -s"
 alias zl="zellij ls"
 alias tn="tmux new -s"
 alias ta="tmux at -t"
-[[ -n "$PORXY_SERVER" ]] && alias proxyall="all_proxy=$PROXY_SERVER"
+[[ -n "$PROXY_SERVER" ]] && alias proxyall="all_proxy=$PROXY_SERVER"
 
 ##################
 #####Key Bind#####
