@@ -6,7 +6,7 @@ fastfetch
 ######################
 #####Zshrc Extend#####
 ######################
-[[ -s "$HOME/.zshrcext" ]] source "$HOME/.zshrcext"
+[[ -s "$HOME/.zshrcext" ]] && source "$HOME/.zshrcext"
 
 ####################
 #####ZPlug Init#####
