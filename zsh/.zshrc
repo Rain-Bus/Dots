@@ -9,14 +9,6 @@ function setup_terminal() {
     ######################
     [[ -s "$HOME/.zshrcext" ]] && source "$HOME/.zshrcext"
 
-    ####################
-    #####ZPlug Init#####
-    ####################
-    if [[ ! -d ~/.zplug ]]; then
-        git clone https://github.com/zplug/zplug ~/.zplug
-        source ~/.zplug/init.zsh && zplug update --self
-    fi
-    source ~/.zplug/init.zsh
 
     ###############
     ######Envs#####
@@ -43,36 +35,6 @@ function setup_terminal() {
     # Upper Lower Letter Completion
     #autoload -Uz compinit && compinit
     #zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-    #######################
-    #####ZPlug Plugins#####
-    #######################
-    if [[ -f ~/.zplug/init.zsh ]] {
-        autoload colors && colors
-        zplug "plugins/git", from:oh-my-zsh
-        zplug "plugins/sudo", from:oh-my-zsh
-        zplug "plugins/z", from:oh-my-zsh
-        zplug "plugins/aliases", from:oh-my-zsh
-        zplug "plugins/extract", from:oh-my-zsh
-        zplug "plugins/colored-man-pages", from:oh-my-zsh
-
-        zplug "zsh-users/zsh-syntax-highlighting"
-    #	zplug "zsh-users/zsh-autosuggestions"
-    #	zplug "zsh-users/zsh-history-substring-search"
-        zplug "junegunn/fzf"
-
-        #zplug "romkatv/powerlevel10k", as:theme
-
-    }
-    if ! zplug check --verbose; then
-        printf "Install? [y/N]: "
-        if read -q; then
-            echo; zplug install
-        else
-            echo
-        fi
-    fi
-    zplug load
 
     ######################
     #####Prog's Init######
@@ -116,6 +78,40 @@ function setup_terminal() {
 }
 
 function setup_shell() {
+    ####################
+    #####ZPlug Init#####
+    ####################
+    if [[ ! -d ~/.zplug ]]; then
+        git clone https://github.com/zplug/zplug ~/.zplug
+        source ~/.zplug/init.zsh && zplug update --self
+    fi
+    source ~/.zplug/init.zsh
+
+    #######################
+    #####ZPlug Plugins#####
+    #######################
+    if [[ -f ~/.zplug/init.zsh ]] {
+        autoload colors && colors
+        zplug "plugins/git", from:oh-my-zsh
+        zplug "plugins/sudo", from:oh-my-zsh
+        zplug "plugins/z", from:oh-my-zsh
+        zplug "plugins/aliases", from:oh-my-zsh
+        zplug "plugins/extract", from:oh-my-zsh
+        zplug "plugins/colored-man-pages", from:oh-my-zsh
+
+        zplug "zsh-users/zsh-syntax-highlighting"
+        zplug "junegunn/fzf"
+    }
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        else
+            echo
+        fi
+    fi
+    zplug load
+
     # Starship
     eval "$(starship init zsh)"
 
@@ -156,7 +152,7 @@ function setup_shell() {
     #bindkey "^[[B" history-substring-search-down
 }
 
-setup_terminal
+setup_shell
 if [[ ! -n $NVIM ]]; then
-    setup_shell
+    setup_terminal
 fi
