@@ -33,7 +33,7 @@ plugin({
 plugin({
   "jay-babu/mason-null-ls.nvim",
   opts = conf.masonuls,
-  dependencies = { "williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim" },
+  dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
 })
 plugin({
   "jay-babu/mason-nvim-dap.nvim",
