@@ -118,14 +118,11 @@ function M.names()
 end
 
 function M.setup()
-  -- local lspconfig = require("lspconfig")
-  -- local lspconfig = vim.lsp.config
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
   N.icons()
   for k, v in pairs(servers) do
     v.on_attach = N.custom_attach
     v.capabilities = capabilities
-    -- lspconfig[k].setup(v)
     vim.lsp.config(k, v)
   end
 end

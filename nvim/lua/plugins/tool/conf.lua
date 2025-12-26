@@ -2,7 +2,6 @@ local M = {}
 
 function M.telescope()
   require("telescope").load_extension("fzf")
-  -- require("telescope").load_extension("projects")
   require("telescope").load_extension("dap")
   require("telescope").load_extension("ui-select")
   return {
@@ -24,10 +23,6 @@ function M.telescope()
     },
   }
 end
-
--- function M.project()
---   return {}
--- end
 
 function M.toggleterm()
   return {
