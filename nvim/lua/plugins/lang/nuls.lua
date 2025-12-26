@@ -6,16 +6,16 @@ local sources = {
   nuls.builtins.formatting.gofumpt,
   nuls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
   nuls.builtins.formatting.prettier,
+  nuls.builtins.formatting.tidy,
   nuls.builtins.formatting.taplo,
-  nuls.builtins.formatting.xmlformat,
   nuls.builtins.formatting.clang_format,
   nuls.builtins.formatting.verible_verilog_format,
 }
 
 local special_name = {
-  xmlformat = "xmlformatter",
   rustfmt = nil, -- not install by mason
   verible_verilog_format = nil, -- not install by mason
+  tidy = nil,
 }
 
 local M = {}

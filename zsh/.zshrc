@@ -4,12 +4,6 @@ function setup_terminal() {
     ##################
     fastfetch
 
-    ######################
-    #####Zshrc Extend#####
-    ######################
-    [[ -s "$HOME/.zshrcext" ]] && source "$HOME/.zshrcext"
-
-
     ###############
     ######Envs#####
     ###############
@@ -112,6 +106,12 @@ function setup_shell() {
     fi
     zplug load
 
+    ######################
+    #####Zshrc Extend#####
+    ######################
+    [[ -s "$HOME/.zshrcext" ]] && source "$HOME/.zshrcext"
+
+
     # Starship
     eval "$(starship init zsh)"
 
@@ -139,7 +139,7 @@ function setup_shell() {
     alias zl="zellij ls"
     alias tn="tmux new -s"
     alias ta="tmux at -t"
-    [[ -n "$PROXY_SERVER" ]] && alias proxyall="all_proxy=$PROXY_SERVER"
+    [[ -n "$PROXY_SERVER" ]] && alias pxa="all_proxy=$PROXY_SERVER http_proxy=$PROXY_SERVER https_proxy=$PROXY_SERVER"
 
     ##################
     #####Key Bind#####

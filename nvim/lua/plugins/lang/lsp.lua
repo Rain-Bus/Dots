@@ -6,21 +6,21 @@ local servers = {
   lua_ls = {
     format_on_save = true,
     settings = {
-      Lua = {
-        runtime = {
-          version = "LuaJIT",
-        },
-        diagnostics = {
-          globals = { "vim" },
-        },
-        workspace = {
-          library = vim.api.nvim_get_runtime_file("", true),
-          checkThirdParty = false,
-        },
-        telemetry = {
-          enable = false,
-        },
-      },
+      -- Lua = {
+      --   runtime = {
+      --     version = "LuaJIT",
+      --   },
+      --   diagnostics = {
+      --     globals = { "vim" },
+      --   },
+      --   workspace = {
+      --     library = vim.api.nvim_get_runtime_file("", true),
+      --     checkThirdParty = false,
+      --   },
+      --   telemetry = {
+      --     enable = false,
+      --   },
+      -- },
     },
   },
   gopls = {
@@ -55,15 +55,7 @@ local servers = {
   html = {},
   cssls = {},
   ts_ls = {},
-  volar = {
-    init_options = {
-      typescript = {
-        tsdk = {
-          vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
-        },
-      },
-    },
-  },
+  vue_ls = {},
 
   -- Conf
   jsonls = {
@@ -126,24 +118,26 @@ function M.names()
 end
 
 function M.setup()
-  local lspconfig = require("lspconfig")
+  -- local lspconfig = require("lspconfig")
+  -- local lspconfig = vim.lsp.config
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
   N.icons()
   for k, v in pairs(servers) do
     v.on_attach = N.custom_attach
     v.capabilities = capabilities
-    lspconfig[k].setup(v)
+    -- lspconfig[k].setup(v)
+    vim.lsp.config(k, v)
   end
 end
 
 ---@param client lsp.Client
 N.custom_attach = function(client, bufnr)
   require("plugins.innerkeymap").lsp(bufnr)
-  if client.config.format_with_lsp ~= true and client.supports_method("textDocument/formatting") then
+  if client.config.format_with_lsp ~= true and client:supports_method("textDocument/formatting") then
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
   end
-  if client.config.format_on_save == true and client.supports_method("textDocument/formatting") then
+  if client.config.format_on_save == true and client:supports_method("textDocument/formatting") then
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {

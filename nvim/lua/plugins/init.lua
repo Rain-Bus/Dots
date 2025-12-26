@@ -5,7 +5,7 @@ local N = {
   ---@type LazyConfig[]
   configs = {},
   ---@type string[]
-  exclude = {"goolord/alpha-nvim"},
+  exclude = { "goolord/alpha-nvim" },
 }
 
 local M = {}

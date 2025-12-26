@@ -51,5 +51,5 @@ plugin({
     "nvim-treesitter/nvim-treesitter",
   },
 })
-plugin({ "ray-x/lsp_signature.nvim", opts = conf.signature })
+plugin({ "ray-x/lsp_signature.nvim", event = "InsertEnter", opts = conf.signature })
 plugin({ "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons", opts = conf.trouble })
