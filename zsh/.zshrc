@@ -60,6 +60,10 @@ function setup_terminal() {
     # Rustup
     [[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
+    # Mise
+    export MISE_DIR="$HOME/.local/share/mise"
+    [[ -s "$MISE_DIR/shims/mise" ]] && eval "$(mise activate zsh)"
+
     # Powerlevel10k
     # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
     # Initialization code that may require console input (password prompts, [y/n]
@@ -139,6 +143,7 @@ function setup_shell() {
     alias zl="zellij ls"
     alias tn="tmux new -s"
     alias ta="tmux at -t"
+    alias mupvibe="mise up opencode claude codex pi"
     [[ -n "$PROXY_SERVER" ]] && alias pxa="all_proxy=$PROXY_SERVER http_proxy=$PROXY_SERVER https_proxy=$PROXY_SERVER"
 
     ##################
