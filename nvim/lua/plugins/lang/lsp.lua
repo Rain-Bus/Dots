@@ -136,10 +136,10 @@ N.custom_attach = function(client, bufnr)
   end
   if client.config.format_on_save == true and client:supports_method("textDocument/formatting") then
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_clear_autocmds({ group = augroup, buf = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = augroup,
-      buffer = bufnr,
+      buf = bufnr,
       callback = function()
         vim.lsp.buf.format({ bufnr = bufnr })
       end,

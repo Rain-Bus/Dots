@@ -61,8 +61,7 @@ function setup_terminal() {
     [[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
     # Mise
-    export MISE_DIR="$HOME/.local/share/mise"
-    [[ -s "$MISE_DIR/shims/mise" ]] && eval "$(mise activate zsh)"
+    [[ -s "$HOME/.local/bin/mise" ]] && eval "$(mise activate zsh)"
 
     # Powerlevel10k
     # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

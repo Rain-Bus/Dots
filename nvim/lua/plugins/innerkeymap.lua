@@ -14,29 +14,29 @@ M.cmp = function()
 end
 
 M.lsp = function(bufnr)
-  map("n", "gd", "<cmd>Lspsaga peek_definition<cr>", { desc = "Popup definition", buffer = bufnr })
-  map("n", "gD", "<cmd>Lspsaga goto_definition<cr>", { desc = "Go to definition", buffer = bufnr })
-  map("n", "gr", "<cmd>Lspsaga rename<cr>", { desc = "Rename", buffer = bufnr })
-  map("n", "gh", "<cmd>Lspsaga hover_doc<cr>", { desc = "Popup document", buffer = bufnr })
-  map("n", "gf", "<cmd>Lspsaga lsp_finder<cr>", { desc = "Find ref and def", buffer = bufnr })
-  map("n", "gR", "<cmd>Trouble lsp_references toggle<cr>", { desc = "Show references", buffer = bufnr })
-  map("n", "gi", "<cmd>Trouble lsp_implementations toggle<cr>", { desc = "Show implementations", buffer = bufnr })
-  map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { desc = "Goto last diagnostic", buffer = bufnr })
-  map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", { desc = "Goto next diagnostic", buffer = bufnr })
-  map("n", "<LEADER>lo", "<cmd>Lspsaga outline<cr>", { desc = "Show implementations", buffer = bufnr })
-  map("n", "<LEADER>la", "<cmd>Lspsaga code_action<cr>", { desc = "Show implementations", buffer = bufnr })
-  map("n", "<LEADER>ll", "<cmd>Lspsaga show_line_diagnostics<cr>", { desc = "Show line diagnostic", buffer = bufnr })
+  map("n", "gd", "<cmd>Lspsaga peek_definition<cr>", { desc = "Popup definition", buf = bufnr })
+  map("n", "gD", "<cmd>Lspsaga goto_definition<cr>", { desc = "Go to definition", buf = bufnr })
+  map("n", "gr", "<cmd>Lspsaga rename<cr>", { desc = "Rename", buf = bufnr })
+  map("n", "gh", "<cmd>Lspsaga hover_doc<cr>", { desc = "Popup document", buf = bufnr })
+  map("n", "gf", "<cmd>Lspsaga lsp_finder<cr>", { desc = "Find ref and def", buf = bufnr })
+  map("n", "gR", "<cmd>Trouble lsp_references toggle<cr>", { desc = "Show references", buf = bufnr })
+  map("n", "gi", "<cmd>Trouble lsp_implementations toggle<cr>", { desc = "Show implementations", buf = bufnr })
+  map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { desc = "Goto last diagnostic", buf = bufnr })
+  map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", { desc = "Goto next diagnostic", buf = bufnr })
+  map("n", "<LEADER>lo", "<cmd>Lspsaga outline<cr>", { desc = "Show implementations", buf = bufnr })
+  map("n", "<LEADER>la", "<cmd>Lspsaga code_action<cr>", { desc = "Show implementations", buf = bufnr })
+  map("n", "<LEADER>ll", "<cmd>Lspsaga show_line_diagnostics<cr>", { desc = "Show line diagnostic", buf = bufnr })
   map(
     "n",
     "<LEADER>lc",
     "<cmd>Lspsaga show_cursor_diagnostics<cr>",
-    { desc = "Show cursor diagnostic", buffer = bufnr }
+    { desc = "Show cursor diagnostic", buf = bufnr }
   )
   map(
     "n",
     "<LEADER>lf",
     "<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
-    { desc = "Show cursor diagnostic", buffer = bufnr }
+    { desc = "Show cursor diagnostic", buf = bufnr }
   )
 end
 
