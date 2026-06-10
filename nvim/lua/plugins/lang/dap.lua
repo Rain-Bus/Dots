@@ -123,24 +123,13 @@ function N.dapui()
 end
 
 function N.dapsign()
-  vim.fn.sign_define("DapBreakpoint", {
-    text = "ﱣ",
-    texthl = "LspDiagnosticsSignError",
-    linehl = "",
-    numhl = "",
-  })
-  vim.fn.sign_define("DapStopped", {
-    text = "",
-    texthl = "LspDiagnosticsSignInformation",
-    linehl = "DiagnosticUnderlineInfo",
-    numhl = "LspDiagnosticsSignInformation",
-  })
-  vim.fn.sign_define("DapBreakpointRejected", {
-    text = "",
-    texthl = "LspDiagnosticsSignHint",
-    linehl = "",
-    numhl = "",
-  })
+  local sign = vim.fn.sign_define
+  sign("DapBreakpoint", { text = "ﱣ", texthl = "DapBreakpointSign" })
+  sign("DapStopped", { text = "", texthl = "DapStoppedSign", linehl = "DiagnosticUnderlineInfo" })
+  sign("DapBreakpointRejected", { text = "", texthl = "DapBreakpointRejectedSign" })
+  vim.api.nvim_set_hl(0, "DapBreakpointSign", { link = "DiagnosticSignError" })
+  vim.api.nvim_set_hl(0, "DapStoppedSign", { link = "DiagnosticSignInfo" })
+  vim.api.nvim_set_hl(0, "DapBreakpointRejectedSign", { link = "DiagnosticSignHint" })
 end
 
 return M

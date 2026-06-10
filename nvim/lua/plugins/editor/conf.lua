@@ -1,9 +1,5 @@
 local M = {}
 
-function M.comment()
-  return {}
-end
-
 function M.autopair()
   return {}
 end
