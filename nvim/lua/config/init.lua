@@ -1,6 +1,6 @@
 ---@class NVimConfig
 local defaults = {
-  switchs = {
+  switches = {
     plugins = true,
     options = true,
     keymaps = true,
@@ -41,13 +41,13 @@ end
 
 function N.load()
   local require_s = require("utils.notify").safe_require
-  if options.switchs.plugins == true then
+  if options.switches.plugins == true then
     -- TODO: replace
     require_s("config.plugins")
   else
     require_s("lazy").setup()
   end
-  for k, v in pairs(options.switchs) do
+  for k, v in pairs(options.switches) do
     if k == "plugins" or not v then
       goto continue
     end

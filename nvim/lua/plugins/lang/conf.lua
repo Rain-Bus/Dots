@@ -21,7 +21,6 @@ function M.treesitter()
       "yaml",
       "toml",
       "tsx",
-      "toml",
       "vim",
       "vimdoc",
     },

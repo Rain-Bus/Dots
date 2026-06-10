@@ -5,7 +5,7 @@ local map = require("utils.keymaps").map
 
 -- Change mode
 map({ "i", "t" }, "jk", "<ESC>", { desc = "Normal mode" })
-map("n", "<ESC>w", "<cmd>wqa<cr>", { desc = "Save anad quit" })
+map("n", "<ESC>w", "<cmd>wqa<cr>", { desc = "Save and quit" })
 map("n", "<ESC>q", "<cmd>qa!<cr>", { desc = "Force quit all" })
 
 -- Better up/down
@@ -66,7 +66,7 @@ map("n", "<F21>", "<cmd>DapContinue<cr>", { desc = "Debug continue" })
 map("n", "<F26>", "<cmd>DapTerminate<cr>", { desc = "Debug terminate" })
 map("n", "<F32>", "<cmd>DapToggleBreakpoint<cr>", { desc = "Toggle breakpoint" })
 map("n", "<F44>", "<cmd>Telescope dap list_breakpoints<cr>", { desc = "List breakpoint" })
-map("n", "<F57>", require("plugins.innerkeymap").dap.run_to_cursor, { desc = "Debug contunue" })
+map("n", "<F57>", require("plugins.innerkeymap").dap.run_to_cursor, { desc = "Debug continue" })
 
 -- Trouble
 map("n", "<leader>xx", "<cmd>Trouble toggle<cr>", { desc = "Toggle trouble" })
