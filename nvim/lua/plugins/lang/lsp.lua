@@ -102,11 +102,18 @@ local servers = {
 }
 
 function N.icons()
-  for k, v in pairs(require("config.icons").diagnostics) do
-    local name = "DiagnosticSign" .. k
-    vim.fn.sign_define(name, { text = v, texthl = name, numhl = "" })
-  end
-  vim.diagnostic.config({ virtual_text = require("config.icons").virtual })
+  local icons = require("config.icons")
+  vim.diagnostic.config({
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+        [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+      },
+    },
+    virtual_text = icons.virtual,
+  })
 end
 
 function M.names()
