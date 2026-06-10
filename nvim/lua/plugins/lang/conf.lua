@@ -32,41 +32,36 @@ function M.treesitter()
   })
 end
 
-function M.cmp()
-  local cmp = require("cmp")
-  cmp.setup({
-    snippet = {
-      expand = function(args)
-        require("luasnip").lsp_expand(args.body)
-      end,
+function M.blink()
+  local icons = require("config.icons").kinds
+  return {
+    keymap = {
+      preset = "super-tab",
+      ["<C-o>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<C-space>"] = {},
     },
-    sources = cmp.config.sources({
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "buffer" },
-    }),
-    mapping = require("plugins.innerkeymap").cmp(),
-    formatting = {
-      format = function(_, item)
-        local icons = require("config.icons").kinds
-        item.kind = icons[item.kind] or item.kind
-        return item
-      end,
+    appearance = {
+      nerd_font_variant = "mono",
+      kind_icons = icons,
     },
-  })
-  cmp.setup.cmdline({ "/", "?" }, {
-    mapping = cmp.mapping.preset.cmdline(),
     sources = {
-      { name = "buffer" },
+      default = { "lsp", "path", "snippets", "buffer", "copilot" },
+      providers = {
+        copilot = {
+          name = "copilot",
+          module = "blink-cmp-copilot",
+          score_offset = 100,
+          async = true,
+        },
+      },
     },
-  })
-  cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = "path" },
-      { name = "cmdline" },
-    }),
-  })
+    completion = {
+      documentation = { auto_show = true, auto_show_delay_ms = 200 },
+      list = { selection = { preselect = true } },
+    },
+    signature = { enabled = true },
+    fuzzy = { implementation = "rust" },
+  }
 end
 
 function M.copilot()

@@ -125,7 +125,7 @@ function M.names()
 end
 
 function M.setup()
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
+  local capabilities = require("blink.cmp").get_lsp_capabilities()
   N.icons()
   for k, v in pairs(servers) do
     v.on_attach = N.custom_attach

@@ -2,17 +2,6 @@ local M = {}
 
 local map = require("utils.keymaps").map
 
-M.cmp = function()
-  local cmp = require("cmp")
-  return {
-    ["<C-k>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-j>"] = cmp.mapping.scroll_docs(4),
-    ["<Up>"] = cmp.mapping.select_prev_item(),
-    ["<Down>"] = cmp.mapping.select_next_item(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-  }
-end
-
 M.lsp = function(bufnr)
   map("n", "gd", "<cmd>Lspsaga peek_definition<cr>", { desc = "Popup definition", buf = bufnr })
   map("n", "gD", "<cmd>Lspsaga goto_definition<cr>", { desc = "Go to definition", buf = bufnr })

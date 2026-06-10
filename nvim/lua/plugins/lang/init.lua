@@ -5,19 +5,17 @@ plugin({ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", opts = conf.tre
 
 plugin({ "mfussenegger/nvim-dap", config = conf.dap, dependencies = { "nvim-neotest/nvim-nio" } })
 
-plugin({ "L3MON4D3/LuaSnip", version = "1.*", build = "make install_jsregexp" })
-
 plugin({
-  "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
-  config = conf.cmp,
+  "saghen/blink.cmp",
+  build = function()
+    require("blink.cmp").build():pwait()
+  end,
   dependencies = {
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { "saadparwaiz1/cmp_luasnip" },
+    { "saghen/blink.lib" },
+    { "rafamadriz/friendly-snippets" },
+    { "giuxtaposition/blink-cmp-copilot" },
   },
+  opts = conf.blink,
 })
 plugin({ "zbirenbaum/copilot.lua", event = "InsertEnter", opts = conf.copilot })
 
