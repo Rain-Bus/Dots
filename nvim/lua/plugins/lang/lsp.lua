@@ -2,6 +2,28 @@ local M = {}
 
 local N = {}
 
+-- Auto-detect Python interpreter: $VIRTUAL_ENV > .venv in project > conda > fallback
+local function get_python_path()
+  local venv = os.getenv("VIRTUAL_ENV")
+  if venv then
+    return venv .. "/bin/python"
+  end
+  local found = vim.fs.find(".venv", {
+    path = vim.fn.getcwd(),
+    upward = true,
+    type = "directory",
+    stop = vim.env.HOME,
+  })
+  if #found > 0 then
+    return found[1] .. "/bin/python"
+  end
+  local conda = os.getenv("CONDA_PREFIX")
+  if conda then
+    return conda .. "/bin/python"
+  end
+  return "python3"
+end
+
 local servers = {
   lua_ls = {
     mason = "lua-language-server",
@@ -38,7 +60,10 @@ local servers = {
   rust_analyzer = {
     mason = "rust-analyzer",
   },
-  pyright = {},
+  ty = {
+    cmd = { "ty", "server" },
+    filetypes = { "python" },
+  },
   jdtls = {
     bundles = {
       vim.fn.glob(
@@ -129,6 +154,13 @@ function M.setup()
   for k, v in pairs(servers) do
     v.on_attach = N.custom_attach
     v.capabilities = capabilities
+    -- dynamically detect Python venv at config time
+    if v.detect_venv then
+      v.settings = vim.tbl_deep_extend("force", v.settings or {}, {
+        python = { pythonPath = get_python_path() },
+      })
+      v.detect_venv = nil
+    end
     vim.lsp.config(k, v)
     vim.lsp.enable(k)
   end

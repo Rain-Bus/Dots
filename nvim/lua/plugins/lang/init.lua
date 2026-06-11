@@ -24,7 +24,7 @@ plugin({
   build = ":MasonUpdate",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    require("mason").setup(conf.mason())
+    conf.mason()
     conf.lsp()
   end,
 })

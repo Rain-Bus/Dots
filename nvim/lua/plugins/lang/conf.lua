@@ -52,12 +52,17 @@ function M.copilot()
 end
 
 function M.mason()
+  require("mason").setup({})
   local lsp = require("plugins.lang.lsp").names()
   local fmt = require("plugins.lang.conform").names()
   local dap = require("plugins.lang.dap").names()
-  return {
-    ensure_installed = vim.list_extend(lsp, vim.list_extend(fmt, dap)),
-  }
+  local all = vim.list_extend(lsp, vim.list_extend(fmt, dap))
+  local registry = require("mason-registry")
+  for _, pkg in ipairs(all) do
+    if not registry.is_installed(pkg) then
+      vim.cmd("MasonInstall " .. pkg)
+    end
+  end
 end
 
 function M.lsp()
