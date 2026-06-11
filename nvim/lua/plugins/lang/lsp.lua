@@ -142,10 +142,6 @@ end
 ---@param client lsp.Client
 N.custom_attach = function(client, bufnr)
   require("plugins.innerkeymap").lsp(bufnr)
-  if client.config.format_with_lsp ~= true and client:supports_method("textDocument/formatting") then
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
-  end
   if client.config.format_on_save == true and client:supports_method("textDocument/formatting") then
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     vim.api.nvim_clear_autocmds({ group = augroup, buf = bufnr })

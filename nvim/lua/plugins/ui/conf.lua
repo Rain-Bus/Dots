@@ -128,13 +128,6 @@ function M.dapui()
   }
 end
 
-function M.signature()
-  return {
-    bind = false,
-    hint_enable = false,
-  }
-end
-
 function M.trouble()
   return {}
 end
