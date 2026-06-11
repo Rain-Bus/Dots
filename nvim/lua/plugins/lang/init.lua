@@ -29,4 +29,4 @@ plugin({
   end,
 })
 
-plugin({ "nvimtools/none-ls.nvim", opts = conf.nuls })
+plugin({ "stevearc/conform.nvim", event = "BufWritePre", config = conf.conform })

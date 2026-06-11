@@ -53,10 +53,10 @@ end
 
 function M.mason()
   local lsp = require("plugins.lang.lsp").names()
-  local nuls = require("plugins.lang.nuls").names()
+  local fmt = require("plugins.lang.conform").names()
   local dap = require("plugins.lang.dap").names()
   return {
-    ensure_installed = vim.list_extend(lsp, vim.list_extend(nuls, dap)),
+    ensure_installed = vim.list_extend(lsp, vim.list_extend(fmt, dap)),
   }
 end
 
@@ -64,8 +64,8 @@ function M.lsp()
   require("plugins.lang.lsp").setup()
 end
 
-function M.nuls()
-  require("plugins.lang.nuls").setup()
+function M.conform()
+  require("plugins.lang.conform").setup()
 end
 
 function M.dap()

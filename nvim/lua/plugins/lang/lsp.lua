@@ -5,7 +5,6 @@ local N = {}
 local servers = {
   lua_ls = {
     mason = "lua-language-server",
-    format_on_save = true,
     settings = {
       -- Lua = {
       --   runtime = {
@@ -25,7 +24,6 @@ local servers = {
     },
   },
   gopls = {
-    format_on_save = true,
     settings = {
       analyses = {
         unusewrites = true,
@@ -39,7 +37,6 @@ local servers = {
   clangd = {},
   rust_analyzer = {
     mason = "rust-analyzer",
-    format_on_save = true,
   },
   pyright = {},
   jdtls = {
@@ -62,7 +59,6 @@ local servers = {
   -- Conf
   jsonls = {
     mason = "json-lsp",
-    format_on_save = true,
     flags = { debounce_text_changes = 500 },
     init_options = { provideFormatter = false },
     settings = {
@@ -90,7 +86,6 @@ local servers = {
   },
   yamlls = {
     mason = "yaml-language-server",
-    format_on_save = true,
     settings = {
       yaml = {
         schemas = {
@@ -142,17 +137,6 @@ end
 ---@param client lsp.Client
 N.custom_attach = function(client, bufnr)
   require("plugins.innerkeymap").lsp(bufnr)
-  if client.config.format_on_save == true and client:supports_method("textDocument/formatting") then
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    vim.api.nvim_clear_autocmds({ group = augroup, buf = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buf = bufnr,
-      callback = function()
-        vim.lsp.buf.format({ bufnr = bufnr })
-      end,
-    })
-  end
 end
 
 return M

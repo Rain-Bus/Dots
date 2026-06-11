@@ -16,7 +16,7 @@ M.lsp = function(bufnr)
   map(
     "n",
     "<LEADER>lf",
-    "<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
+    "<cmd>lua require('conform').format({ async = true, lsp_format = 'fallback' })<cr>",
     { desc = "Format buffer", buf = bufnr }
   )
 end
