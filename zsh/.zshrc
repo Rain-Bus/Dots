@@ -131,7 +131,7 @@ function setup_shell() {
     alias ll="eza -l"
     alias lla="eza -al"
     alias tree="eza -T --icons"
-    alias du="ncdu"
+    # alias du="ncdu"
     alias top="htop"
     # alias grep="rg"
     # alias cat="bat"
