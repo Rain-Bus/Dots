@@ -128,10 +128,6 @@ function M.dapui()
   }
 end
 
-function M.lspsaga()
-  return {}
-end
-
 function M.signature()
   return {
     bind = false,

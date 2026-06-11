@@ -42,14 +42,5 @@ plugin({ "lukas-reineke/indent-blankline.nvim", main = "ibl", config = conf.inde
 
 plugin({ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" }, opts = conf.dapui })
 
-plugin({
-  "nvimdev/lspsaga.nvim",
-  event = "LspAttach",
-  opts = conf.lspsaga,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "nvim-treesitter/nvim-treesitter",
-  },
-})
 plugin({ "ray-x/lsp_signature.nvim", event = "InsertEnter", opts = conf.signature })
 plugin({ "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons", opts = conf.trouble })

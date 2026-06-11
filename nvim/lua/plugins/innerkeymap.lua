@@ -3,29 +3,21 @@ local M = {}
 local map = require("utils.keymaps").map
 
 M.lsp = function(bufnr)
-  map("n", "gd", "<cmd>Lspsaga peek_definition<cr>", { desc = "Popup definition", buf = bufnr })
-  map("n", "gD", "<cmd>Lspsaga goto_definition<cr>", { desc = "Go to definition", buf = bufnr })
-  map("n", "gr", "<cmd>Lspsaga rename<cr>", { desc = "Rename", buf = bufnr })
-  map("n", "gh", "<cmd>Lspsaga hover_doc<cr>", { desc = "Popup document", buf = bufnr })
-  map("n", "gf", "<cmd>Lspsaga lsp_finder<cr>", { desc = "Find ref and def", buf = bufnr })
+  map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition", buf = bufnr })
+  map("n", "gr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename", buf = bufnr })
+  map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Popup document", buf = bufnr })
   map("n", "gR", "<cmd>Trouble lsp_references toggle<cr>", { desc = "Show references", buf = bufnr })
   map("n", "gi", "<cmd>Trouble lsp_implementations toggle<cr>", { desc = "Show implementations", buf = bufnr })
-  map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { desc = "Goto last diagnostic", buf = bufnr })
-  map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", { desc = "Goto next diagnostic", buf = bufnr })
-  map("n", "<LEADER>lo", "<cmd>Lspsaga outline<cr>", { desc = "Show implementations", buf = bufnr })
-  map("n", "<LEADER>la", "<cmd>Lspsaga code_action<cr>", { desc = "Show implementations", buf = bufnr })
-  map("n", "<LEADER>ll", "<cmd>Lspsaga show_line_diagnostics<cr>", { desc = "Show line diagnostic", buf = bufnr })
-  map(
-    "n",
-    "<LEADER>lc",
-    "<cmd>Lspsaga show_cursor_diagnostics<cr>",
-    { desc = "Show cursor diagnostic", buf = bufnr }
-  )
+  map("n", "[e", "<cmd>lua vim.diagnostic.jump({ count = -1 })<cr>", { desc = "Goto last diagnostic", buf = bufnr })
+  map("n", "]e", "<cmd>lua vim.diagnostic.jump({ count = 1 })<cr>", { desc = "Goto next diagnostic", buf = bufnr })
+  map("n", "<LEADER>lo", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Show outline", buf = bufnr })
+  map("n", "<LEADER>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action", buf = bufnr })
+  map("n", "<LEADER>ll", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Show line diagnostic", buf = bufnr })
   map(
     "n",
     "<LEADER>lf",
     "<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
-    { desc = "Show cursor diagnostic", buf = bufnr }
+    { desc = "Format buffer", buf = bufnr }
   )
 end
 
