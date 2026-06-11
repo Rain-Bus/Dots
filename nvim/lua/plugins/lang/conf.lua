@@ -52,24 +52,11 @@ function M.copilot()
 end
 
 function M.mason()
-  return {}
-end
-
-function M.masonlsp()
+  local lsp = require("plugins.lang.lsp").names()
+  local nuls = require("plugins.lang.nuls").names()
+  local dap = require("plugins.lang.dap").names()
   return {
-    ensure_installed = require("plugins.lang.lsp").names(),
-  }
-end
-
-function M.masonuls()
-  return {
-    ensure_installed = require("plugins.lang.nuls").names(),
-  }
-end
-
-function M.masondap()
-  return {
-    ensure_installed = require("plugins.lang.dap").names(),
+    ensure_installed = vim.list_extend(lsp, vim.list_extend(nuls, dap)),
   }
 end
 

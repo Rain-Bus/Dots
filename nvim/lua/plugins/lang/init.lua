@@ -19,22 +19,14 @@ plugin({
 })
 plugin({ "zbirenbaum/copilot.lua", event = "InsertEnter", opts = conf.copilot })
 
-plugin({ "neovim/nvim-lspconfig", event = { "BufReadPre", "BufNewFile" }, config = conf.lsp })
+plugin({
+  "williamboman/mason.nvim",
+  build = ":MasonUpdate",
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    require("mason").setup(conf.mason())
+    conf.lsp()
+  end,
+})
 
 plugin({ "nvimtools/none-ls.nvim", opts = conf.nuls })
-plugin({ "williamboman/mason.nvim", build = ":MasonUpdate", opts = conf.mason })
-plugin({
-  "williamboman/mason-lspconfig.nvim",
-  opts = conf.masonlsp,
-  dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
-})
-plugin({
-  "jay-babu/mason-null-ls.nvim",
-  opts = conf.masonuls,
-  dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
-})
-plugin({
-  "jay-babu/mason-nvim-dap.nvim",
-  opts = conf.masondap,
-  dependencies = { "williamboman/mason.nvim", "mfussenegger/nvim-dap" },
-})

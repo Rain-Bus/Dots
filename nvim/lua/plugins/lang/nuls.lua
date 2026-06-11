@@ -12,10 +12,13 @@ local sources = {
   nuls.builtins.formatting.verible_verilog_format,
 }
 
-local special_name = {
-  rustfmt = nil, -- not install by mason
-  verible_verilog_format = nil, -- not install by mason
-  tidy = nil,
+local mason_names = {
+  stylua = "stylua",
+  gofumpt = "gofumpt",
+  black = "black",
+  prettier = "prettier",
+  taplo = "taplo",
+  clang_format = "clang-format",
 }
 
 local M = {}
@@ -23,8 +26,8 @@ local M = {}
 function M.names()
   local res = {}
   for _, v in ipairs(sources) do
-    if v then
-      table.insert(res, special_name[v.name] or v.name)
+    if v and mason_names[v.name] then
+      table.insert(res, mason_names[v.name])
     end
   end
   return res

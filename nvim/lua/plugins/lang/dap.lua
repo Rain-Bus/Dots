@@ -3,18 +3,21 @@ local N = {}
 
 local adapters = {
   cppdbg = {
+    mason = "cpptools",
     lang = { "c", "cpp", "rust" },
     id = "cppdbg",
     type = "executable",
     command = vim.fn.stdpath("data") .. "/mason/bin/OpenDebugAD7",
   },
   go = {
+    mason = "go-debug-adapter",
     lang = "go",
     id = "go",
     type = "executable",
     command = vim.fn.stdpath("data") .. "/mason/bin/go-debug-adapter",
   },
   python = {
+    mason = "debugpy",
     lang = "python",
     id = "python",
     type = "executable",
@@ -80,7 +83,7 @@ local configs = {
 function M.names()
   local res = {}
   for _, v in pairs(adapters) do
-    table.insert(res, v.id)
+    table.insert(res, v.mason or v.id)
   end
   return res
 end

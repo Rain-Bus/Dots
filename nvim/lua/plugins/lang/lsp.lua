@@ -4,6 +4,7 @@ local N = {}
 
 local servers = {
   lua_ls = {
+    mason = "lua-language-server",
     format_on_save = true,
     settings = {
       -- Lua = {
@@ -37,6 +38,7 @@ local servers = {
   },
   clangd = {},
   rust_analyzer = {
+    mason = "rust-analyzer",
     format_on_save = true,
   },
   pyright = {},
@@ -52,13 +54,14 @@ local servers = {
   verible = {},
 
   -- Front
-  html = {},
-  cssls = {},
-  ts_ls = {},
-  vue_ls = {},
+  html = { mason = "html-lsp" },
+  cssls = { mason = "css-lsp" },
+  ts_ls = { mason = "typescript-language-server" },
+  vue_ls = { mason = "vue-language-server" },
 
   -- Conf
   jsonls = {
+    mason = "json-lsp",
     format_on_save = true,
     flags = { debounce_text_changes = 500 },
     init_options = { provideFormatter = false },
@@ -86,6 +89,7 @@ local servers = {
     },
   },
   yamlls = {
+    mason = "yaml-language-server",
     format_on_save = true,
     settings = {
       yaml = {
@@ -98,7 +102,7 @@ local servers = {
   taplo = {},
   lemminx = {},
   marksman = {},
-  cmake = {},
+  cmake = { mason = "cmake-language-server" },
 }
 
 function N.icons()
@@ -118,8 +122,8 @@ end
 
 function M.names()
   local res = {}
-  for name, _ in pairs(servers) do
-    table.insert(res, name)
+  for name, conf in pairs(servers) do
+    table.insert(res, conf.mason or name)
   end
   return res
 end
@@ -131,6 +135,7 @@ function M.setup()
     v.on_attach = N.custom_attach
     v.capabilities = capabilities
     vim.lsp.config(k, v)
+    vim.lsp.enable(k)
   end
 end
 
