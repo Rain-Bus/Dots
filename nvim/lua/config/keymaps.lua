@@ -48,7 +48,6 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Telescope find bu
 map("n", "<leader>fd", "<cmd>Telescope fd<cr>", { desc = "Telescope find files" })
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Telescope grep text" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Telescope find help" })
-map("n", "<leader>fp", "<cmd>Telescope project<cr>", { desc = "Telescope find project" })
 
 -- ToggleTerm
 map({ "n", "t" }, "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "ToggleTerm" })
@@ -65,7 +64,7 @@ map("n", "<F20>", "<cmd>DapStepOut<cr>", { desc = "Debug step out" })
 map("n", "<F21>", "<cmd>DapContinue<cr>", { desc = "Debug continue" })
 map("n", "<F26>", "<cmd>DapTerminate<cr>", { desc = "Debug terminate" })
 map("n", "<F32>", "<cmd>DapToggleBreakpoint<cr>", { desc = "Toggle breakpoint" })
-map("n", "<F44>", "<cmd>Telescope dap list_breakpoints<cr>", { desc = "List breakpoint" })
+map("n", "<F44>", "<cmd>DapListBreakpoints<cr>", { desc = "List breakpoint" })
 map("n", "<F57>", require("plugins.innerkeymap").dap.run_to_cursor, { desc = "Debug continue" })
 
 -- Trouble
