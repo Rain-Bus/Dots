@@ -1,7 +1,7 @@
 local conf = require("plugins.lang.conf")
 local plugin = require("plugins").register
 
-plugin({ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", opts = conf.treesitter })
+plugin({ "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate", config = conf.treesitter })
 
 plugin({ "mfussenegger/nvim-dap", config = conf.dap, dependencies = { "nvim-neotest/nvim-nio" } })
 

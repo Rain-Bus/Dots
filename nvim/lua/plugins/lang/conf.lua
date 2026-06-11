@@ -1,34 +1,17 @@
 local M = {}
 function M.treesitter()
-  require("nvim-treesitter.configs").setup({
-    modules = {},
-    ignore_install = {},
-    ensure_installed = {
-      "c",
-      "css",
-      "lua",
-      "rust",
-      "go",
-      "java",
-      "javascript",
-      "typescript",
-      "html",
-      "json",
-      "markdown",
-      "markdown_inline",
-      "python",
-      "vue",
-      "yaml",
-      "toml",
-      "tsx",
-      "vim",
-      "vimdoc",
-    },
-    sync_install = false,
-    auto_install = true,
-    highlight = {
-      enable = true,
-    },
+  local parsers = {
+    "c", "css", "lua", "rust", "go", "java",
+    "javascript", "typescript", "html", "json",
+    "markdown", "markdown_inline", "python", "vue",
+    "yaml", "toml", "tsx", "vim", "vimdoc",
+  }
+  require("nvim-treesitter").install(parsers)
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = parsers,
+    callback = function()
+      vim.treesitter.start()
+    end,
   })
 end
 
@@ -60,7 +43,7 @@ function M.blink()
       list = { selection = { preselect = true } },
     },
     signature = { enabled = true },
-    fuzzy = { implementation = "rust" },
+    fuzzy = { implementation = "prefer_rust_with_warning" },
   }
 end
 

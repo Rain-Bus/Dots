@@ -28,9 +28,6 @@ end
 function M.nvim_tree()
   return {
     hijack_cursor = true,
-    system_open = {
-      cmd = "xdg-open",
-    },
     renderer = {
       icons = {
         glyphs = {
